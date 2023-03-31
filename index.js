@@ -15,13 +15,29 @@ const wrapper = document.querySelector(".wrapper"),
         var loginBox = document.getElementById("login");
         var regBox = document.getElementById("register");
        
-        const API_ENDPOINT_ACCOUNT = "https://64247aee7ac292e3cfeb96c1.mockapi.io/accounts"
+        const API_ENDPOINT_ACCOUNT  = "https://64247aee7ac292e3cfeb96c1.mockapi.io/accounts"
              
+async function createNewAccounts(newAccount) {
+  try {
+    const params = {
+      method: "POST",
+      body: JSON.stringify(newAccount),
+      headers: {
+        "Content-type": "application/json"
+      }
+    }
+    const response = await fetch("https://64247aee7ac292e3cfeb96c1.mockapi.io/accounts", params);
+   
+    console.log("sudah submit");
+  } catch (error) {
+    console.log("error", error);
+  }
+}
         function register() {
           event.preventDefault();
         
-          var email = document.getElementById("re").value;
-          var password = document.getElementById("rp").value;
+          var inputEmail = document.getElementById("re").value;
+          var inputpassword = document.getElementById("rp").value;
           var passwordRetype = document.getElementById("rrp").value;
         
           const validateLowerCase = /[a-z]/;
@@ -29,87 +45,53 @@ const wrapper = document.querySelector(".wrapper"),
           const validateNumber = /[0-9]/;
           const myRegex = /^[a-zA-Z0-9]+@[a-zA-Z]+\.[a-zA-Z.]{2,5}$/;
         
-          if (email == "") {
+          if (inputEmail == "") {
             alert("Email required.");
             return;
-          } else if (!myRegex.test(email)) {
+          } else if (!myRegex.test(inputEmail)) {
             alert("Please input valid email");
-          } else if (password == "") {
+          } else if (inputpassword == "") {
             alert("Password required.");
             return;
-          } else if (!validateUpperCase.test(password)) {
+          } else if (!validateUpperCase.test(inputpassword)) {
             alert(
               "Please input password with min 1 Upper case"
             );
           } else if (passwordRetype == "") {
             alert("Password required.");
             return;
-          } else if (password != passwordRetype) {
+          } else if (inputpassword != passwordRetype) {
             alert("Password don't match retype your Password.");
             return;
-          } else if (emailArray.indexOf(email) == -1) {
-            emailArray.push(email);
-            passwordArray.push(password);
-        
-            alert(email + "  Thanks for registration. \nTry to login Now");
-        
-            document.getElementById("re").value = "";
-            document.getElementById("rp").value = "";
-            document.getElementById("rrp").value = "";
-          } else {
-            alert(email + " is already register.");
-            localStorage.setItem("email", email);
-            localStorage.setItem("password", password);
-            window.location.href = "index.html";
-          }
-        }
-
+          } else { createNewAccounts({email: inputEmail, password: inputpassword});
+          }}
 
         function login() {
           event.preventDefault();
         
-          var email = document.getElementById("se").value;
-          var password = document.getElementById("sp").value;
+          var inputEmail = document.getElementById("se").value;
+          var inputpassword = document.getElementById("sp").value;
         
-          var i = emailArray.indexOf(email);
+          var i = emailArray.indexOf(inputEmail);
         
-          if (emailArray.indexOf(email) == -1) {
-            if (email == "") {
+          if (emailArray.indexOf(inputEmail) == -1) {
+            if (inputEmail == "") {
               alert("Email required.");
               return;
             }
             alert("Email does not exist.");
             return;
-          } else if (passwordArray[i] != password) {
-            if (password == "") {
+          } else if (passwordArray[i] != inputpassword) {
+            if (inputpassword == "") {
               alert("Password required.");
               return;
             }
-            // gimana caranya masukkin rest ke sini
             alert("Password does not match.");
             return;
           } else {
-            alert(email + " yor are login Now \n welcome to our website.");
-            localStorage.setItem("email", email);
-            localStorage.setItem("password", password);
+            alert(inputEmail + " yor are login Now \n welcome to our website.");
+            localStorage.setItem("email", inputEmail);
+            localStorage.setItem("password", inputpassword);
             window.location.href = "app.html";
           }
         }
-        // function forgot() {
-        //   event.preventDefault();
-        
-        //   var email = document.getElementById("fe").value;
-        
-        //   if (emailArray.indexOf(email) == -1) {
-        //     if (email == "") {
-        //       alert("Email required.");
-        //       return;
-        //     }
-        //     alert("Email does not exist.");
-        //     return;
-        //   }
-        
-        //   alert("email is send to your email check it in 24hr. \n Thanks");
-        //   document.getElementById("fe").value = "";
-        // }
-        
