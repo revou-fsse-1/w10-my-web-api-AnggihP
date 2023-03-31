@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login & Signup Form</title>
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <section class="wrapper">
+      <div class="form signup">
+        <header>Signup</header>
+        <form action="#">
+          <input id="re" type="email" placeholder="Email" required />
+          <input id="rp" type="password" placeholder="Password" required />
+          <input
+            id="rrp"
+            type="password"
+            placeholder="Re write Password"
+            required
+          />
+          <input type="submit" onclick="register()" value="Submit" />
+        </form>
+      </div>
+
+      <div class="form login">
+        <header>Login</header>
+        <form action="#">
+          <input id="se" type="email" placeholder="Email" required />
+          <input id="sp" type="password" placeholder="Password" required />
+          <!-- <a href="#" onclick="forTabFun()">Forgot password?</a> -->
+          <input type="submit" onclick="login()" value="Submit" />
+        </form>
+      </div>
+    </section>
+    <script src="index.js"></script>
+  </body>
+</html>
