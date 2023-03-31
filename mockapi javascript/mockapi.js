@@ -1,46 +1,46 @@
 // GET ALL ANIME part 1
-// fetch("https://64247aee7ac292e3cfeb96c1.mockapi.io/animes")
-// .then ((response) => response.json())
-// .then ((result) => {
-//   console.log({ result })
-// })
-// .catch(error => { 
-// console.log("error", error);
-// })
+fetch("https://64247aee7ac292e3cfeb96c1.mockapi.io/animes")
+.then ((response) => response.json())
+.then ((result) => {
+  console.log({ result })
+})
+.catch(error => { 
+console.log("error", error);
+})
 
 
 // GET ALL ANIME part 2
-// const API_ENDPOINT = "https://64247aee7ac292e3cfeb96c1.mockapi.io/animes"
+const API_ENDPOINT = "https://64247aee7ac292e3cfeb96c1.mockapi.io/animes"
 
-// async function callApi() {
-//   try {
-//     const response = await fetch(API_ENDPOINT);
-//     const result = await response.json();
+async function callApi() {
+  try {
+    const response = await fetch(API_ENDPOINT);
+    const result = await response.json();
     
-//     console.log(result);
-//   } catch (error) {
-//     console.log("error", error);
-//   }
-// }
+    console.log(result);
+  } catch (error) {
+    console.log("error", error);
+  }
+}
 
-// callApi();
+callApi();
 
 
 // GET ANIME BY ID
-// const API_ENDPOINT = "https://64247aee7ac292e3cfeb96c1.mockapi.io/animes"
+const API_ENDPOINT = "https://64247aee7ac292e3cfeb96c1.mockapi.io/animes"
 
-// async function callApi() {
-//   try {
-//     const response = await fetch(API_ENDPOINT + "/16");
-//     const result = await response.json();
+async function callApi() {
+  try {
+    const response = await fetch(API_ENDPOINT + "/16");
+    const result = await response.json();
     
-//     console.log(result);
-//   } catch (error) {
-//     console.log("error", error);
-//   }
-// }
+    console.log(result);
+  } catch (error) {
+    console.log("error", error);
+  }
+}
 
-// callApi();
+callApi();
 
 
 //ATAU CARA LEBIH RAPI
@@ -89,10 +89,10 @@ async function getAnimeById(animeId) {
 // getAllAnimes();
 
 // UNTUK MEMANGGIL DATA BY ID
-// getAnimeById(16);
-// getAnimeById(15);
-// getAnimeById(17);
-// getAnimeById(1);
+getAnimeById(16);
+getAnimeById(15);
+getAnimeById(17);
+getAnimeById(1);
 
 async function createNewAnime(newAnime) {
   try {
@@ -113,11 +113,11 @@ async function createNewAnime(newAnime) {
 }
 
 //MEMBUAT DATA BARU
-// createNewAnime({
-//   title: "Anime baru",
-//   ongoing: false,
-//   summary: "baru rilis anime"
-// });
+createNewAnime({
+  title: "Anime baru",
+  ongoing: false,
+  summary: "baru rilis anime"
+});
 
 //SIGNUP CREATE
 async function createNewAccounts(newAccount) {
@@ -138,10 +138,10 @@ async function createNewAccounts(newAccount) {
   }
 }
 
-// createNewAccounts({
-//   email: "Lindo",
-//   password: "Lindo123"
-// });
+createNewAccounts({
+  email: "Lindo",
+  password: "Lindo123"
+});
 
 //BERHASIL, cek lagi get All
 // getAllAnimes();
@@ -161,36 +161,36 @@ async function deleteAnime(animeId) {
   }
 }
 
-// deleteAnime(18);
+deleteAnime(18);
 // BERHASIL, cek All lagi
 // getAllAnimes();
 
 
 //UPDATE DARI YANG SUDAH ADA
-// async function updateAnime(updatedAnime) {
-//   try {
-//      const params = {
-//       method: "PUT",
-//       body: JSON.stringify(updatedAnime),
-//       headers: {
-//         "Content-type": "application/json"
-//       }
-//      };
-//     const response = await fetch("https://64247aee7ac292e3cfeb96c1.mockapi.io/animes/1", params);
-//     const result = await response.json();
+async function updateAnime(updatedAnime) {
+  try {
+     const params = {
+      method: "PUT",
+      body: JSON.stringify(updatedAnime),
+      headers: {
+        "Content-type": "application/json"
+      }
+     };
+    const response = await fetch("https://64247aee7ac292e3cfeb96c1.mockapi.io/animes/1", params);
+    const result = await response.json();
     
-//     console.log(result);
-//   } catch (error) {
-//     console.log("error", error);
-//   }
-// }
+    console.log(result);
+  } catch (error) {
+    console.log("error", error);
+  }
+}
 
-// updateAnime({
-//   id: "1",
-//   title: "Naruto Shippuden",
-//   ongoing: false,
-//   summary: "Ninja art, and war"
-// });
+updateAnime({
+  id: "1",
+  title: "Naruto Shippuden",
+  ongoing: false,
+  summary: "Ninja art, and war"
+});
 //BERHASIL
 
 //UPDATE KEMBALI KE SEMULA
@@ -212,10 +212,10 @@ async function updateAnime(updatedAnime) {
   }
 }
 
-// updateAnime({
-//   id: 1,
-//   title: "Naruto Shippuden",
-//   ongoing: false,
-//   summary: "Ninja art, and war"
-// });
+updateAnime({
+  id: 1,
+  title: "Naruto Shippuden",
+  ongoing: false,
+  summary: "Ninja art, and war"
+});
 //BERHASIL
