@@ -1,7 +1,38 @@
+const API_ENDPOINT = "https://64247aee7ac292e3cfeb96c1.mockapi.io/animes"
+
+async function createNewAnime(newAnime) {
+  try {
+    const params = {
+      method: "POST",
+      body: JSON.stringify(newAnime),
+      headers: {
+        "Content-type": "application/json"
+      }
+    }
+    const response = await fetch(API_ENDPOINT, params);
+    const result = await response.json();
+    
+    console.log(result);
+  } catch (error) {
+    console.log("error", error);
+  }
+}
+
+async function getAllAnimes() {
+  try {
+    const response = await fetch(API_ENDPOINT);
+    const result = await response.json();
+
+    return result;
+  } catch (error) {
+    console.log("error", error);
+  }
+}
+
 function save() {
   var read = document.getElementById("inputConfirmation");
   if (read.checked == true) {
-    bookList2 = JSON.parse(localStorage.getItem("listItem4")) ?? [];
+    booklist2 = getAllAnimes();
     var id;
     bookList2.length != 0
       ? bookList.findLast((item) => (id = item.id))
@@ -10,9 +41,9 @@ function save() {
       bookList2.forEach((value) => {
         if (document.getElementById("inputAnimeId").value == value.id) {
           (value.title = document.getElementById("inputAnimeTitle").value),
-            (value.date = document.getElementById("inputReleaseDate").value),
+            (value.releaseDate = document.getElementById("inputReleaseDate").value),
             (value.summary = document.getElementById("inputSummary").value),
-            (value.isComplete = 0);
+            (value.ongoing = document.getElementById("inputOngoing").value)
         }
       });
       document.getElementById("inputAnimeId").value = "";
@@ -20,13 +51,15 @@ function save() {
       var item = {
         id: id + 1,
         title: document.getElementById("inputAnimeTitle").value,
-        date: document.getElementById("inputReleaseDate").value,
+        releaseDate: document.getElementById("inputReleaseDate").value,
         summary: document.getElementById("inputSummary").value,
-        isComplete: 0,
+        ongoing: document.getElementById("inputOnging").value
       };
-      bookList2.push(item);
+      createNewAnime(item);
+      // bookList2.push(item);
     }
-    localStorage.setItem("listItem4", JSON.stringify(bookList2));
+    // localStorage.setItem("listItem4", JSON.stringify(bookList2));
+
   } else {
     alert("Need to agree to Term and Condition");
     return;
